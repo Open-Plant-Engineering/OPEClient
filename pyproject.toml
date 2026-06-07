@@ -1,0 +1,20 @@
+[project]
+name = "opeclient"
+version = "0.1.0"
+description = "OPE Client SDK"
+authors = [
+    {name = "Shivang Kheradiya"}
+]
+dependencies = [
+    "requests"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = ["pytest"]
