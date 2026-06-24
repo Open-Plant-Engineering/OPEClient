@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import work_pb2 as work__pb2
+from Protos import session_pb2 as Protos_dot_session__pb2
 
 GRPC_GENERATED_VERSION = '1.81.1'
 GRPC_VERSION = grpc.__version__
@@ -18,14 +18,14 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in work_pb2_grpc.py depends on'
+        + ' but the generated code in Protos/session_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class WorkServiceStub:
+class SessionServiceStub:
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -34,75 +34,75 @@ class WorkServiceStub:
         Args:
             channel: A grpc.Channel.
         """
-        self.StreamSaveChanges = channel.stream_stream(
-                '/work.WorkService/StreamSaveChanges',
-                request_serializer=work__pb2.SaveNodeRequest.SerializeToString,
-                response_deserializer=work__pb2.SaveNodeResponse.FromString,
+        self.StartSession = channel.unary_unary(
+                '/session.SessionService/StartSession',
+                request_serializer=Protos_dot_session__pb2.StartSessionRequest.SerializeToString,
+                response_deserializer=Protos_dot_session__pb2.StartSessionResponse.FromString,
                 _registered_method=True)
-        self.StreamGetWork = channel.unary_stream(
-                '/work.WorkService/StreamGetWork',
-                request_serializer=work__pb2.GetWorkRequest.SerializeToString,
-                response_deserializer=work__pb2.GetWorkResponse.FromString,
+        self.CloseSession = channel.unary_unary(
+                '/session.SessionService/CloseSession',
+                request_serializer=Protos_dot_session__pb2.CloseSessionRequest.SerializeToString,
+                response_deserializer=Protos_dot_session__pb2.SessionActionResponse.FromString,
                 _registered_method=True)
-        self.StreamNodeHistory = channel.unary_stream(
-                '/work.WorkService/StreamNodeHistory',
-                request_serializer=work__pb2.NodeHistoryRequest.SerializeToString,
-                response_deserializer=work__pb2.NodeHistoryResponse.FromString,
+        self.AbortSession = channel.unary_unary(
+                '/session.SessionService/AbortSession',
+                request_serializer=Protos_dot_session__pb2.AbortSessionRequest.SerializeToString,
+                response_deserializer=Protos_dot_session__pb2.SessionActionResponse.FromString,
                 _registered_method=True)
 
 
-class WorkServiceServicer:
+class SessionServiceServicer:
     """Missing associated documentation comment in .proto file."""
 
-    def StreamSaveChanges(self, request_iterator, context):
+    def StartSession(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def StreamGetWork(self, request, context):
+    def CloseSession(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def StreamNodeHistory(self, request, context):
+    def AbortSession(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_WorkServiceServicer_to_server(servicer, server):
+def add_SessionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'StreamSaveChanges': grpc.stream_stream_rpc_method_handler(
-                    servicer.StreamSaveChanges,
-                    request_deserializer=work__pb2.SaveNodeRequest.FromString,
-                    response_serializer=work__pb2.SaveNodeResponse.SerializeToString,
+            'StartSession': grpc.unary_unary_rpc_method_handler(
+                    servicer.StartSession,
+                    request_deserializer=Protos_dot_session__pb2.StartSessionRequest.FromString,
+                    response_serializer=Protos_dot_session__pb2.StartSessionResponse.SerializeToString,
             ),
-            'StreamGetWork': grpc.unary_stream_rpc_method_handler(
-                    servicer.StreamGetWork,
-                    request_deserializer=work__pb2.GetWorkRequest.FromString,
-                    response_serializer=work__pb2.GetWorkResponse.SerializeToString,
+            'CloseSession': grpc.unary_unary_rpc_method_handler(
+                    servicer.CloseSession,
+                    request_deserializer=Protos_dot_session__pb2.CloseSessionRequest.FromString,
+                    response_serializer=Protos_dot_session__pb2.SessionActionResponse.SerializeToString,
             ),
-            'StreamNodeHistory': grpc.unary_stream_rpc_method_handler(
-                    servicer.StreamNodeHistory,
-                    request_deserializer=work__pb2.NodeHistoryRequest.FromString,
-                    response_serializer=work__pb2.NodeHistoryResponse.SerializeToString,
+            'AbortSession': grpc.unary_unary_rpc_method_handler(
+                    servicer.AbortSession,
+                    request_deserializer=Protos_dot_session__pb2.AbortSessionRequest.FromString,
+                    response_serializer=Protos_dot_session__pb2.SessionActionResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'work.WorkService', rpc_method_handlers)
+            'session.SessionService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('work.WorkService', rpc_method_handlers)
+    server.add_registered_method_handlers('session.SessionService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class WorkService:
+class SessionService:
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def StreamSaveChanges(request_iterator,
+    def StartSession(request,
             target,
             options=(),
             channel_credentials=None,
@@ -112,12 +112,12 @@ class WorkService:
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_stream(
-            request_iterator,
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            '/work.WorkService/StreamSaveChanges',
-            work__pb2.SaveNodeRequest.SerializeToString,
-            work__pb2.SaveNodeResponse.FromString,
+            '/session.SessionService/StartSession',
+            Protos_dot_session__pb2.StartSessionRequest.SerializeToString,
+            Protos_dot_session__pb2.StartSessionResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -129,7 +129,7 @@ class WorkService:
             _registered_method=True)
 
     @staticmethod
-    def StreamGetWork(request,
+    def CloseSession(request,
             target,
             options=(),
             channel_credentials=None,
@@ -139,12 +139,12 @@ class WorkService:
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(
+        return grpc.experimental.unary_unary(
             request,
             target,
-            '/work.WorkService/StreamGetWork',
-            work__pb2.GetWorkRequest.SerializeToString,
-            work__pb2.GetWorkResponse.FromString,
+            '/session.SessionService/CloseSession',
+            Protos_dot_session__pb2.CloseSessionRequest.SerializeToString,
+            Protos_dot_session__pb2.SessionActionResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -156,7 +156,7 @@ class WorkService:
             _registered_method=True)
 
     @staticmethod
-    def StreamNodeHistory(request,
+    def AbortSession(request,
             target,
             options=(),
             channel_credentials=None,
@@ -166,12 +166,12 @@ class WorkService:
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(
+        return grpc.experimental.unary_unary(
             request,
             target,
-            '/work.WorkService/StreamNodeHistory',
-            work__pb2.NodeHistoryRequest.SerializeToString,
-            work__pb2.NodeHistoryResponse.FromString,
+            '/session.SessionService/AbortSession',
+            Protos_dot_session__pb2.AbortSessionRequest.SerializeToString,
+            Protos_dot_session__pb2.SessionActionResponse.FromString,
             options,
             channel_credentials,
             insecure,

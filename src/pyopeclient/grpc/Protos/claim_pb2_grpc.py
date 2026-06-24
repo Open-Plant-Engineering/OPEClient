@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import claim_pb2 as claim__pb2
+from Protos import claim_pb2 as Protos_dot_claim__pb2
 
 GRPC_GENERATED_VERSION = '1.81.1'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in claim_pb2_grpc.py depends on'
+        + ' but the generated code in Protos/claim_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,13 +36,13 @@ class ClaimServiceStub:
         """
         self.StreamClaimNodes = channel.stream_stream(
                 '/claim.ClaimService/StreamClaimNodes',
-                request_serializer=claim__pb2.ClaimNodeRequest.SerializeToString,
-                response_deserializer=claim__pb2.ClaimNodeResponse.FromString,
+                request_serializer=Protos_dot_claim__pb2.ClaimNodeRequest.SerializeToString,
+                response_deserializer=Protos_dot_claim__pb2.ClaimNodeResponse.FromString,
                 _registered_method=True)
         self.StreamReleaseNodes = channel.stream_stream(
                 '/claim.ClaimService/StreamReleaseNodes',
-                request_serializer=claim__pb2.ReleaseNodeRequest.SerializeToString,
-                response_deserializer=claim__pb2.ReleaseNodeResponse.FromString,
+                request_serializer=Protos_dot_claim__pb2.ReleaseNodeRequest.SerializeToString,
+                response_deserializer=Protos_dot_claim__pb2.ReleaseNodeResponse.FromString,
                 _registered_method=True)
 
 
@@ -68,13 +68,13 @@ def add_ClaimServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'StreamClaimNodes': grpc.stream_stream_rpc_method_handler(
                     servicer.StreamClaimNodes,
-                    request_deserializer=claim__pb2.ClaimNodeRequest.FromString,
-                    response_serializer=claim__pb2.ClaimNodeResponse.SerializeToString,
+                    request_deserializer=Protos_dot_claim__pb2.ClaimNodeRequest.FromString,
+                    response_serializer=Protos_dot_claim__pb2.ClaimNodeResponse.SerializeToString,
             ),
             'StreamReleaseNodes': grpc.stream_stream_rpc_method_handler(
                     servicer.StreamReleaseNodes,
-                    request_deserializer=claim__pb2.ReleaseNodeRequest.FromString,
-                    response_serializer=claim__pb2.ReleaseNodeResponse.SerializeToString,
+                    request_deserializer=Protos_dot_claim__pb2.ReleaseNodeRequest.FromString,
+                    response_serializer=Protos_dot_claim__pb2.ReleaseNodeResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -102,8 +102,8 @@ class ClaimService:
             request_iterator,
             target,
             '/claim.ClaimService/StreamClaimNodes',
-            claim__pb2.ClaimNodeRequest.SerializeToString,
-            claim__pb2.ClaimNodeResponse.FromString,
+            Protos_dot_claim__pb2.ClaimNodeRequest.SerializeToString,
+            Protos_dot_claim__pb2.ClaimNodeResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -129,8 +129,8 @@ class ClaimService:
             request_iterator,
             target,
             '/claim.ClaimService/StreamReleaseNodes',
-            claim__pb2.ReleaseNodeRequest.SerializeToString,
-            claim__pb2.ReleaseNodeResponse.FromString,
+            Protos_dot_claim__pb2.ReleaseNodeRequest.SerializeToString,
+            Protos_dot_claim__pb2.ReleaseNodeResponse.FromString,
             options,
             channel_credentials,
             insecure,

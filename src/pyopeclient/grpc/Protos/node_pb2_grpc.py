@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import node_pb2 as node__pb2
+from Protos import node_pb2 as Protos_dot_node__pb2
 
 GRPC_GENERATED_VERSION = '1.81.1'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in node_pb2_grpc.py depends on'
+        + ' but the generated code in Protos/node_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -37,43 +37,43 @@ class NodeServiceStub:
         """
         self.CreateNode = channel.unary_unary(
                 '/node.NodeService/CreateNode',
-                request_serializer=node__pb2.CreateNodeRequest.SerializeToString,
-                response_deserializer=node__pb2.CreateNodeResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.CreateNodeRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.CreateNodeResponse.FromString,
                 _registered_method=True)
         self.ClaimNode = channel.unary_unary(
                 '/node.NodeService/ClaimNode',
-                request_serializer=node__pb2.ClaimNodeRequest.SerializeToString,
-                response_deserializer=node__pb2.ClaimNodeResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.ClaimNodeRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.ClaimNodeResponse.FromString,
                 _registered_method=True)
         self.SetAttribute = channel.unary_unary(
                 '/node.NodeService/SetAttribute',
-                request_serializer=node__pb2.SetAttributeRequest.SerializeToString,
-                response_deserializer=node__pb2.SetAttributeResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.SetAttributeRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.SetAttributeResponse.FromString,
                 _registered_method=True)
         self.GetNode = channel.unary_unary(
                 '/node.NodeService/GetNode',
-                request_serializer=node__pb2.GetNodeRequest.SerializeToString,
-                response_deserializer=node__pb2.NodeResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.GetNodeRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.NodeResponse.FromString,
                 _registered_method=True)
         self.StoreValue = channel.unary_unary(
                 '/node.NodeService/StoreValue',
-                request_serializer=node__pb2.StoreValueRequest.SerializeToString,
-                response_deserializer=node__pb2.StoreValueResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.StoreValueRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.StoreValueResponse.FromString,
                 _registered_method=True)
         self.RemoveAttribute = channel.unary_unary(
                 '/node.NodeService/RemoveAttribute',
-                request_serializer=node__pb2.RemoveAttributeRequest.SerializeToString,
-                response_deserializer=node__pb2.RemoveAttributeResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.RemoveAttributeRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.RemoveAttributeResponse.FromString,
                 _registered_method=True)
         self.BulkSetAttributes = channel.unary_unary(
                 '/node.NodeService/BulkSetAttributes',
-                request_serializer=node__pb2.BulkSetAttributesRequest.SerializeToString,
-                response_deserializer=node__pb2.BulkSetAttributesResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.BulkSetAttributesRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.BulkSetAttributesResponse.FromString,
                 _registered_method=True)
         self.BulkRemoveAttributes = channel.unary_unary(
                 '/node.NodeService/BulkRemoveAttributes',
-                request_serializer=node__pb2.BulkRemoveAttributesRequest.SerializeToString,
-                response_deserializer=node__pb2.BulkRemoveAttributesResponse.FromString,
+                request_serializer=Protos_dot_node__pb2.BulkRemoveAttributesRequest.SerializeToString,
+                response_deserializer=Protos_dot_node__pb2.BulkRemoveAttributesResponse.FromString,
                 _registered_method=True)
 
 
@@ -134,43 +134,43 @@ def add_NodeServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateNode': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateNode,
-                    request_deserializer=node__pb2.CreateNodeRequest.FromString,
-                    response_serializer=node__pb2.CreateNodeResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.CreateNodeRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.CreateNodeResponse.SerializeToString,
             ),
             'ClaimNode': grpc.unary_unary_rpc_method_handler(
                     servicer.ClaimNode,
-                    request_deserializer=node__pb2.ClaimNodeRequest.FromString,
-                    response_serializer=node__pb2.ClaimNodeResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.ClaimNodeRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.ClaimNodeResponse.SerializeToString,
             ),
             'SetAttribute': grpc.unary_unary_rpc_method_handler(
                     servicer.SetAttribute,
-                    request_deserializer=node__pb2.SetAttributeRequest.FromString,
-                    response_serializer=node__pb2.SetAttributeResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.SetAttributeRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.SetAttributeResponse.SerializeToString,
             ),
             'GetNode': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNode,
-                    request_deserializer=node__pb2.GetNodeRequest.FromString,
-                    response_serializer=node__pb2.NodeResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.GetNodeRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.NodeResponse.SerializeToString,
             ),
             'StoreValue': grpc.unary_unary_rpc_method_handler(
                     servicer.StoreValue,
-                    request_deserializer=node__pb2.StoreValueRequest.FromString,
-                    response_serializer=node__pb2.StoreValueResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.StoreValueRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.StoreValueResponse.SerializeToString,
             ),
             'RemoveAttribute': grpc.unary_unary_rpc_method_handler(
                     servicer.RemoveAttribute,
-                    request_deserializer=node__pb2.RemoveAttributeRequest.FromString,
-                    response_serializer=node__pb2.RemoveAttributeResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.RemoveAttributeRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.RemoveAttributeResponse.SerializeToString,
             ),
             'BulkSetAttributes': grpc.unary_unary_rpc_method_handler(
                     servicer.BulkSetAttributes,
-                    request_deserializer=node__pb2.BulkSetAttributesRequest.FromString,
-                    response_serializer=node__pb2.BulkSetAttributesResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.BulkSetAttributesRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.BulkSetAttributesResponse.SerializeToString,
             ),
             'BulkRemoveAttributes': grpc.unary_unary_rpc_method_handler(
                     servicer.BulkRemoveAttributes,
-                    request_deserializer=node__pb2.BulkRemoveAttributesRequest.FromString,
-                    response_serializer=node__pb2.BulkRemoveAttributesResponse.SerializeToString,
+                    request_deserializer=Protos_dot_node__pb2.BulkRemoveAttributesRequest.FromString,
+                    response_serializer=Protos_dot_node__pb2.BulkRemoveAttributesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -199,8 +199,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/CreateNode',
-            node__pb2.CreateNodeRequest.SerializeToString,
-            node__pb2.CreateNodeResponse.FromString,
+            Protos_dot_node__pb2.CreateNodeRequest.SerializeToString,
+            Protos_dot_node__pb2.CreateNodeResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -226,8 +226,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/ClaimNode',
-            node__pb2.ClaimNodeRequest.SerializeToString,
-            node__pb2.ClaimNodeResponse.FromString,
+            Protos_dot_node__pb2.ClaimNodeRequest.SerializeToString,
+            Protos_dot_node__pb2.ClaimNodeResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -253,8 +253,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/SetAttribute',
-            node__pb2.SetAttributeRequest.SerializeToString,
-            node__pb2.SetAttributeResponse.FromString,
+            Protos_dot_node__pb2.SetAttributeRequest.SerializeToString,
+            Protos_dot_node__pb2.SetAttributeResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -280,8 +280,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/GetNode',
-            node__pb2.GetNodeRequest.SerializeToString,
-            node__pb2.NodeResponse.FromString,
+            Protos_dot_node__pb2.GetNodeRequest.SerializeToString,
+            Protos_dot_node__pb2.NodeResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -307,8 +307,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/StoreValue',
-            node__pb2.StoreValueRequest.SerializeToString,
-            node__pb2.StoreValueResponse.FromString,
+            Protos_dot_node__pb2.StoreValueRequest.SerializeToString,
+            Protos_dot_node__pb2.StoreValueResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -334,8 +334,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/RemoveAttribute',
-            node__pb2.RemoveAttributeRequest.SerializeToString,
-            node__pb2.RemoveAttributeResponse.FromString,
+            Protos_dot_node__pb2.RemoveAttributeRequest.SerializeToString,
+            Protos_dot_node__pb2.RemoveAttributeResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -361,8 +361,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/BulkSetAttributes',
-            node__pb2.BulkSetAttributesRequest.SerializeToString,
-            node__pb2.BulkSetAttributesResponse.FromString,
+            Protos_dot_node__pb2.BulkSetAttributesRequest.SerializeToString,
+            Protos_dot_node__pb2.BulkSetAttributesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -388,8 +388,8 @@ class NodeService:
             request,
             target,
             '/node.NodeService/BulkRemoveAttributes',
-            node__pb2.BulkRemoveAttributesRequest.SerializeToString,
-            node__pb2.BulkRemoveAttributesResponse.FromString,
+            Protos_dot_node__pb2.BulkRemoveAttributesRequest.SerializeToString,
+            Protos_dot_node__pb2.BulkRemoveAttributesResponse.FromString,
             options,
             channel_credentials,
             insecure,
