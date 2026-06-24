@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "OPEDbEngine.gRPC.Session";
+
+package session;
+
+service SessionService {
+  rpc StartSession (StartSessionRequest) returns (StartSessionResponse);
+  rpc CloseSession (CloseSessionRequest) returns (SessionActionResponse);
+  rpc AbortSession (AbortSessionRequest) returns (SessionActionResponse);
+}
+
+message StartSessionRequest {
+  string userId = 1;
+}
+
+message StartSessionResponse {
+  string sessionId = 1;
+}
+
+message CloseSessionRequest {
+  string sessionId = 1;
+}
+
+message AbortSessionRequest {
+  string sessionId = 1;
+  string reason = 2;
+}
+
+message SessionActionResponse {
+  bool success = 1;
+  string message = 2;
+  string errorCode = 3;
+}

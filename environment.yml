@@ -1,0 +1,21 @@
+name: ope-client
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+
+  # core
+  - pip
+
+  # dev tools
+  - pytest
+  - black
+  - ruff
+
+  # pip packages (grpc etc.)
+  - pip:
+      - grpcio
+      - grpcio-tools
+      - protobuf
+      - watchfiles
