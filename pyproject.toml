@@ -24,6 +24,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src", "src/pyopeclient/grpc"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["E402"]

@@ -15,6 +15,7 @@ dependencies:
 
   # pip packages (grpc etc.)
   - pip:
+      - pytest
       - grpcio
       - grpcio-tools
       - protobuf
