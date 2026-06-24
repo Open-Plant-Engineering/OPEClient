@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14Protos/session.proto\x12\x07session\"%\n\x13StartSessionRequest\x12\x0e\n\x06userId\x18\x01 \x01(\t\")\n\x14StartSessionResponse\x12\x11\n\tsessionId\x18\x01 \x01(\t\"(\n\x13\x43loseSessionRequest\x12\x11\n\tsessionId\x18\x01 \x01(\t\"8\n\x13\x41\x62ortSessionRequest\x12\x11\n\tsessionId\x18\x01 \x01(\t\x12\x0e\n\x06reason\x18\x02 \x01(\t\"L\n\x15SessionActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x11\n\terrorCode\x18\x03 \x01(\t2\xf9\x01\n\x0eSessionService\x12K\n\x0cStartSession\x12\x1c.session.StartSessionRequest\x1a\x1d.session.StartSessionResponse\x12L\n\x0c\x43loseSession\x12\x1c.session.CloseSessionRequest\x1a\x1e.session.SessionActionResponse\x12L\n\x0c\x41\x62ortSession\x12\x1c.session.AbortSessionRequest\x1a\x1e.session.SessionActionResponseB\x1b\xaa\x02\x18OPEDbEngine.gRPC.Sessionb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14Protos/session.proto\x12\x07session\"%\n\x13StartSessionRequest\x12\x0e\n\x06userId\x18\x01 \x01(\t\"^\n\x14StartSessionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x11\n\tsessionId\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t\x12\x11\n\terrorCode\x18\x04 \x01(\t\"(\n\x13\x43loseSessionRequest\x12\x11\n\tsessionId\x18\x01 \x01(\t\"L\n\x15SessionActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x11\n\terrorCode\x18\x03 \x01(\t2\xab\x01\n\x0eSessionService\x12K\n\x0cStartSession\x12\x1c.session.StartSessionRequest\x1a\x1d.session.StartSessionResponse\x12L\n\x0c\x43loseSession\x12\x1c.session.CloseSessionRequest\x1a\x1e.session.SessionActionResponseB\x1b\xaa\x02\x18OPEDbEngine.gRPC.Sessionb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,13 +35,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_STARTSESSIONREQUEST']._serialized_start=33
   _globals['_STARTSESSIONREQUEST']._serialized_end=70
   _globals['_STARTSESSIONRESPONSE']._serialized_start=72
-  _globals['_STARTSESSIONRESPONSE']._serialized_end=113
-  _globals['_CLOSESESSIONREQUEST']._serialized_start=115
-  _globals['_CLOSESESSIONREQUEST']._serialized_end=155
-  _globals['_ABORTSESSIONREQUEST']._serialized_start=157
-  _globals['_ABORTSESSIONREQUEST']._serialized_end=213
-  _globals['_SESSIONACTIONRESPONSE']._serialized_start=215
-  _globals['_SESSIONACTIONRESPONSE']._serialized_end=291
-  _globals['_SESSIONSERVICE']._serialized_start=294
-  _globals['_SESSIONSERVICE']._serialized_end=543
+  _globals['_STARTSESSIONRESPONSE']._serialized_end=166
+  _globals['_CLOSESESSIONREQUEST']._serialized_start=168
+  _globals['_CLOSESESSIONREQUEST']._serialized_end=208
+  _globals['_SESSIONACTIONRESPONSE']._serialized_start=210
+  _globals['_SESSIONACTIONRESPONSE']._serialized_end=286
+  _globals['_SESSIONSERVICE']._serialized_start=289
+  _globals['_SESSIONSERVICE']._serialized_end=460
 # @@protoc_insertion_point(module_scope)
